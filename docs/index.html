@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackathon 2025 - IAM Policy Guard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="top-bar">
+    <span class="brand">Lambda Hackathon 2025: Serverless IAM guard with detection and remediation</span>
+    <nav>
+      <a href="https://github.com/jajera/hackathon-2025-iam-policy-guard" target="_blank" rel="noopener"
+        class="github-link">
+        GitHub
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+          class="octicon octicon-mark-github">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82a7.66 7.66 0 0 1 2.01-.27c.68 0 1.36.09 2.01.27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">🌞</button>
+  </header>
+
+  <!-- Slide Navigation -->
+  <nav class="slide-nav">
+    <button class="nav-btn" onclick="changeSlide(0)">🏠</button>
+    <button class="nav-btn" onclick="changeSlide(1)">🎯</button>
+    <button class="nav-btn" onclick="changeSlide(2)">🏗️</button>
+    <button class="nav-btn" onclick="changeSlide(3)">📸</button>
+    <button class="nav-btn" onclick="changeSlide(4)">🚀</button>
+  </nav>
+
+  <!-- Slide Container -->
+  <main class="slide-container">
+    <!-- Slide 1: Hero -->
+    <section class="slide active" id="slide-0">
+      <div class="slide-content hero">
+        <div class="hero-banner">
+          <img src="assets/hackathon-2025-iam-guard-banner.png" alt="IAM Policy Guard - Serverless Security Banner"
+            class="banner-image" />
+        </div>
+        <h1>🛡️ IAM Policy Guard</h1>
+        <h2>Serverless IAM Security with Detection & Remediation</h2>
+        <p class="hero-description">
+          AI-powered protection that detects dangerous IAM changes and fixes them automatically within seconds.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">18s</span>
+            <span class="stat-label">Average Remediation</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">120</span>
+            <span class="stat-label">AWS Resources</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">Low Cost</span>
+            <span class="stat-label">Monthly Usage</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="cta-button" onclick="changeSlide(4)">🚀 Deploy Now</button>
+          <button class="secondary-button" onclick="changeSlide(2)">🏗️ Architecture</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Overview -->
+    <section class="slide" id="slide-1">
+      <div class="slide-content">
+        <h1>🎯 What It Does</h1>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">🔍</div>
+            <h3>Real-time Monitoring</h3>
+            <p>Watches every IAM policy change via CloudTrail</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🧠</div>
+            <h3>AI Risk Analysis</h3>
+            <p>Claude 3 Sonnet explains threats in plain language</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Auto Remediation</h3>
+            <p>Removes dangerous policies within seconds</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Multi-Channel Alerts</h3>
+            <p>Slack, email, and dashboard notifications</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Architecture -->
+    <section class="slide" id="slide-2">
+      <div class="slide-content">
+        <h1>🏗️ Architecture Flow</h1>
+        <div class="architecture">
+          <div class="flow-diagram">
+            <div class="flow-step">
+              <div class="step-icon">📋</div>
+              <div class="step-label">CloudTrail</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="step-icon">🔍</div>
+              <div class="step-label">Detector</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="step-icon">📨</div>
+              <div class="step-label">SQS Queue</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="step-icon">🔧</div>
+              <div class="step-label">Remediator</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="step-icon">🔔</div>
+              <div class="step-label">Alerts</div>
+            </div>
+          </div>
+          <div class="architecture-details">
+            <h3>⚡ Complete Loop: 18 seconds average</h3>
+            <ul>
+              <li>🔴 <strong>Detect:</strong> CloudTrail + Lambda scan IAM changes</li>
+              <li>📨 <strong>Queue:</strong> SQS stores violations for processing</li>
+              <li>🔧 <strong>Fix:</strong> Remediator Lambda detaches policies</li>
+              <li>📡 <strong>Status:</strong> EventBridge publishes results</li>
+              <li>🔔 <strong>Alert:</strong> Slack + SNS notify teams</li>
+            </ul>
+          </div>
+
+          <div class="dashboard-showcase">
+            <h3>📊 Real-time CloudWatch Dashboard</h3>
+            <figure class="dashboard-figure">
+              <img src="assets/cloudwatch_dashboard.png" alt="CloudWatch Dashboard showing IAM Policy Guard metrics"
+                onclick="openImageModal(this)" />
+              <figcaption>Live metrics and performance monitoring</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: AI-Generated Assets -->
+    <section class="slide" id="slide-3">
+      <div class="slide-content">
+        <h1>🤖 AI-Generated Assets</h1>
+
+        <!-- Header Image Showcase -->
+        <div class="ai-showcase">
+          <div class="ai-section">
+            <h2>🎨 Project Header - Generated by AI</h2>
+            <div class="ai-image-container">
+              <figure class="ai-figure">
+                <img src="assets/hackathon-2025-iam-guard-banner.png" alt="AI-Generated IAM Policy Guard Header Banner"
+                  onclick="openImageModal(this)" />
+                <figcaption>
+                  <strong>Generated with DALL-E 3</strong><br>
+                  <span class="prompt-reference">Prompt: <a href="header-image-prompt.md"
+                      target="_blank">header-image-prompt.md</a></span>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="ai-details">
+              <h3>🛠️ Creation Process</h3>
+              <ul class="ai-process">
+                <li>📝 <strong>Detailed Prompt Engineering</strong> - Comprehensive visual specifications</li>
+                <li>🎯 <strong>Typo Corrections</strong> - Fixed "GitHub" and "Terraform" spelling</li>
+                <li>⚖️ <strong>3:2 Aspect Ratio</strong> - Optimized for professional presentation</li>
+                <li>🎨 <strong>AWS Color Palette</strong> - Brand-consistent design (#232f3e, #ff9900)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div class="notifications-section">
+          <h2>📸 Sample Notifications</h2>
+          <div class="notifications-showcase">
+            <div class="notification-group">
+              <h3>💬 Slack Notifications</h3>
+              <div class="notification-pair">
+                <figure>
+                  <img src="assets/slack_violation_detected.png" alt="Slack violation detected"
+                    onclick="openImageModal(this)" />
+                  <figcaption>Violation Detected</figcaption>
+                </figure>
+                <figure>
+                  <img src="assets/slack_remediation_completed.png" alt="Slack remediation completed"
+                    onclick="openImageModal(this)" />
+                  <figcaption>Remediation Completed</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="notification-group">
+              <h3>📧 Email Notifications</h3>
+              <div class="notification-pair">
+                <figure>
+                  <img src="assets/email_violation_detected.png" alt="Email violation detected"
+                    onclick="openImageModal(this)" />
+                  <figcaption>Detailed Incident Report</figcaption>
+                </figure>
+                <figure>
+                  <img src="assets/email_remediation_completed.png" alt="Email remediation completed"
+                    onclick="openImageModal(this)" />
+                  <figcaption>Complete Audit Trail</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: Deployment -->
+    <section class="slide" id="slide-4">
+      <div class="slide-content">
+        <h1>🚀 Quick Deployment</h1>
+        <div class="deployment-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Clone Repository</h3>
+              <code>git clone https://github.com/jajera/hackathon-2025-iam-policy-guard.git</code>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Configure Variables</h3>
+              <code>
+                alert_email = "security@company.com"<br>
+                slack_webhook_url = "https://hooks.slack.com/..."
+              </code>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Deploy Infrastructure</h3>
+              <code>terraform init && terraform apply</code>
+            </div>
+          </div>
+        </div>
+        <div class="deployment-result">
+          <h3>✅ Expected Result: 120 AWS resources deployed</h3>
+          <p>Your IAM Policy Guard is ready to protect your AWS environment!</p>
+          <a href="https://github.com/jajera/hackathon-2025-iam-policy-guard" class="github-cta" target="_blank">
+            View on GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Modal -->
+  <div class="image-modal" id="image-modal">
+    <button class="close-button" onclick="closeImageModal()">&times;</button>
+    <img id="modal-image" src="" alt="" />
+  </div>
+
+  <!-- Slide Controls -->
+  <div class="slide-controls">
+    <button class="control-btn" onclick="previousSlide()">‹ Previous</button>
+    <span class="slide-indicator">
+      <span id="current-slide">1</span> / <span id="total-slides">5</span>
+    </span>
+    <button class="control-btn" onclick="nextSlide()">Next ›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
